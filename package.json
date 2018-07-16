@@ -1,0 +1,23 @@
+{
+  "name": "music-api",
+  "version": "1.0.0",
+  "description": "mern",
+  "main": "index.js",
+  "scripts": {
+    "start": "backpack",
+    "server": "node build/"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "babel-preset-stage-3": "^6.24.1",
+    "backpack-core": "^0.7.0",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "mongoose": "^5.2.3",
+    "volleyball": "^1.5.1"
+  },
+  "devDependencies": {
+    "dotenv": "^6.0.0"
+  }
+}
