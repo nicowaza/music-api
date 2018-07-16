@@ -14,10 +14,10 @@ const options = {
 
 mongoose.connect(DBUrl, options);
 let db = mongoose.connection;
-
-mongoose.connection.on('connected', () =>
-console.log('[MongoDB] is running on port 27017')
-)
+//
+// mongoose.connection.on('connected', () =>
+// console.log('[MongoDB] is running on port 27017')
+// )
 
 
 db.on('error', console.error.bind(console, 'connection error:'));
@@ -29,6 +29,23 @@ console.log('Connecté a MongoDB !')
 
 app.get("/", (req, res) => {
   console.log('ça marche')
+  res.json({msg: "tout est ok"})
+})
+
+app.use((req, res, next) => {
+  const error = new Error('Not found')
+  error.message = 'route invalide'
+  error.status = 404
+  next(error)
+})
+
+app.use((error, req, res, next) => {
+  res.status(error.status || 500)
+  return res.json({
+    error:{
+      msg: error.message
+    }
+  })
 })
 
 app.use(volleyball)
