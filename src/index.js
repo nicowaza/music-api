@@ -1,30 +1,20 @@
 import express from 'express'
 import "dotenv/config"
-const { SERVER_PORT, DBUrl } = process.env
+const { SERVER_PORT } = process.env
 const app = express()
 import bodyparser from 'body-parser'
 import volleyball from 'volleyball'
 import mongoose from 'mongoose'
+import { connect } from './config/DB'
 
 
-const options = {
-  promiseLibrary: Promise,
-  useNewUrlParser: true
-}
+connect() /* on utilise la méthode connect que l'on a déclaré dans le fichier config de DB  */
 
-mongoose.connect(DBUrl, options);
-let db = mongoose.connection;
-//
 // mongoose.connection.on('connected', () =>
 // console.log('[MongoDB] is running on port 27017')
 // )
 
 
-db.on('error', console.error.bind(console, 'connection error:'));
-
-db.once('open', function () {
-console.log('Connecté a MongoDB !')
-});
 
 
 app.get("/", (req, res) => {
