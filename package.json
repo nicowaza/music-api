@@ -4,8 +4,9 @@
   "description": "mern",
   "main": "index.js",
   "scripts": {
-    "start": "backpack",
-    "server": "node build/"
+    "dev": "backpack",
+    "heroku-postbuild": "npm install",
+    "start": "backpack"
   },
   "author": "",
   "license": "ISC",

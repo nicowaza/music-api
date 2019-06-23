@@ -1,5 +1,5 @@
 import express from 'express'
-import "dotenv/config"
+// import "dotenv/config"
 const {
   SERVER_PORT
 } = process.env
@@ -9,17 +9,13 @@ import volleyball from 'volleyball'
 import swaggerUI from 'swagger-ui-express'
 import swaggerDocument from './config/swagger.json'
 import mongoose from 'mongoose'
-import {
-  connect
-} from './config/DB'
-import {
-  restRouter
-} from './api'
+import { connect } from './config/DB'
+import { restRouter } from './api'
 import passport from 'passport'
-import {
-  configJWTStrategy
-} from './api/middleware/passport-jwt'
-
+import { configJWTStrategy } from './api/middleware/passport-jwt'
+import { getConfig } from './config/config'
+const config = getConfig(process.env.NODE_ENV)
+const port = process.env.PORT || SERVER_PORT
 
 connect() /* on utilise la méthode connect que l'on a déclaré dans le fichier config de DB  */
 
@@ -63,4 +59,4 @@ app.use((error, req, res, next) => {
 
 
 
-app.listen(process.env.PORT || SERVER_PORT, () => console.log(`[Express] is running on ${process.env.PORT || SERVER_PORT}`))
+app.listen(port, () => console.log(`[Express] is running on ${port}`))
