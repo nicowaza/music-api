@@ -14,7 +14,7 @@
     "backpack-core": "^0.7.0",
     "body-parser": "^1.18.3",
     "express": "^4.16.3",
-    "mongoose": "^5.2.3",
+    "mongoose": "^5.7.5",
     "volleyball": "^1.5.1"
   },
   "devDependencies": {
